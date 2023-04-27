@@ -1,11 +1,13 @@
 #include <benchmark/benchmark.h>
 
-#include <my-memory/message.h>
+#include <my_malloc.h>
 
 static void get_hello(benchmark::State& state) {
-	Message m;
-	for (auto _ : state)
-		auto hello = m.get_hello();
+	MyMalloc m;
+	for (auto _ : state) {
+		auto hello = m.malloc(10);
+		m.free(hello);
+	}
 }
 
 BENCHMARK(get_hello);

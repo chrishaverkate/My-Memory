@@ -4,6 +4,9 @@
 
 class MyMemory {
 public:
+	/** @brief Because c++ */
+	virtual ~MyMemory() = default;
+
 	/** @brief behaves like malloc.
 	 * 		Allocates memory from the internally managed pool or null if no memory is available.
 	 * @param size number of bytes to allocate

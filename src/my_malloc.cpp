@@ -31,3 +31,4 @@ uint64_t MyMalloc::used_memory_requested() {
 uint64_t MyMalloc::used_memory_actual() {
 	return 0;
 }
+

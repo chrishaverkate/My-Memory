@@ -1,7 +1,7 @@
 #pragma once
 #include <my-memory/my_memory.h>
 
-#include <stdint.h>
+#include <cstdint>
 #include <map>
 
 class MyMalloc : public MyMemory {

@@ -2,6 +2,7 @@ set(target_name ${CMAKE_PROJECT_NAME}_lib)
 
 add_library(${target_name}
 	OBJECT
+		allocator_factory.cpp
 		message.cpp
 		my_malloc.cpp
 )

@@ -10,6 +10,7 @@ TEST(MyMallocTests, malloc) {
 	MyMalloc my_malloc;
 	void* ptr = my_malloc.malloc(10);
 	ASSERT_NE(ptr, nullptr);
+	my_malloc.free(ptr);
 }
 
 TEST(MyMallocTests, free) {
@@ -34,3 +35,4 @@ TEST(MyMallocTests, current_bytes_requested_first_allocation) {
 	my_malloc.free(ptr);
 	ASSERT_EQ(my_malloc.used_memory_requested(), 0);
 }
+
