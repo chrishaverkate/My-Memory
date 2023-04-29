@@ -1,6 +1,7 @@
 set(target_name tests-unit)
 
 add_executable(${target_name}
+		fixed_malloc_tests.cpp
         my_malloc_tests.cpp
 )
 

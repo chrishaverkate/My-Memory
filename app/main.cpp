@@ -7,7 +7,9 @@ using std::string;
 using std::unique_ptr;
 
 int main (int argc, char** argv) {
-	unique_ptr<MyMemory> allocator = AllocatorFactory::create(AllocatorType::MY_MALLOC);
+	unique_ptr<MyMemory> allocator = AllocatorFactory::create(AllocatorType::FIXED_SIZE_ALLOCATOR);
+	printf("Current allocations: %llu\n", allocator->current_allocations());
+
 	string message = "Hello World!";
 	char* custom_bucket = 0;
 
@@ -15,6 +17,7 @@ int main (int argc, char** argv) {
 	printf("address (pre-alloc): %p\n", custom_bucket);
 
 	custom_bucket = (char*)allocator->malloc(message.length() + 1);
+	printf("Current allocations: %llu\n", allocator->current_allocations());
 	printf("address (alloc'd)  : %p\n", custom_bucket);
 	custom_bucket[message.length()] = '\0';
 
@@ -28,6 +31,7 @@ int main (int argc, char** argv) {
 	printf("Message (copied)   : %s\n", custom_bucket);
 
 	allocator->free(reinterpret_cast<void*&>(custom_bucket));
+	printf("Current allocations: %llu\n", allocator->current_allocations());
 
 	return 0;
 }
